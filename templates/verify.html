@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kiểm Tra Âm Thanh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-br from-green-100 to-blue-100 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-lg">
+    <h1 class="text-2xl font-bold text-center text-green-700 mb-6">Xác Minh File Âm Thanh</h1>
+
+    <form action="/verify" method="post" enctype="multipart/form-data" class="space-y-4">
+      <div>
+        <label class="block font-medium text-gray-700">Chọn file .zip cần xác minh</label>
+        <input type="file" name="zipfile" accept=".zip" required class="mt-1 w-full border border-gray-300 rounded px-3 py-2" />
+      </div>
+      <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">Xác minh file</button>
+    </form>
+
+    {% if result %}
+    <div class="mt-6 text-center">
+      <p class="font-semibold {% if '✅' in result %}text-green-700{% else %}text-red-600{% endif %}">{{ result }}</p>
+
+      {% if audio_file %}
+      <div class="mt-4">
+        <audio controls class="w-full mt-2">
+          <source src="{{ url_for('download_file', filename=audio_file) }}" type="audio/mpeg">
+          Trình duyệt không hỗ trợ trình phát âm thanh.
+        </audio>
+
+        <div class="flex justify-center gap-4 mt-4">
+          <a href="{{ url_for('download_file', filename=audio_file) }}" download class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">📥 Tải file .mp3</a>
+          <form method="get" action="{{ url_for('delete_file', filename=audio_file) }}">
+            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">🗑 Xóa file</button>
+          </form>
+        </div>
+      </div>
+      {% else %}
+        <p class="mt-2 text-gray-500">Không có âm thanh để phát lại!</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="mt-6 text-center">
+      <a href="/" class="text-blue-600 underline">← Quay lại trang gửi</a>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const audio = document.querySelector("audio");
+      if (audio) {
+        setTimeout(() => audio.play(), 300); // tự động phát sau 0.3 giây
+      }
+    }
+  </script>
+</body>
+</html>
