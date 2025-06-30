@@ -115,7 +115,30 @@ python app_nhan.py
 
 - Nếu tệp hợp lệ: máy nhận giải mã, ghép file và phát lại `output_received.mp3`, đồng thời gửi `"ACK"` phản hồi.
 - Nếu lỗi: gửi `"NACK"` với thông báo chi tiết.
-
+<p align="center">
+  <img src="giaodienchinh.jpg" alt="System Architecture" width="1000"/>
+</p>
+<p align="center">
+  <img src="mahoa.jpg" alt="System Architecture" width="1000"/>
+</p>
+<p align="center">
+  <img src="passgiaima.jpg" alt="System Architecture" width="1000"/>
+</p>
+<p align="center">
+  <img src="giaima.jpg" alt="System Architecture" width="1000"/>
+</p>
+<p align="center">
+  <img src="guifile.jpg" alt="System Architecture" width="1000"/>
+</p>
+<p align="center">
+  <img src="giaodiengiu.jpg" alt="System Architecture" width="1000"/>
+</p>
+<p align="center">
+  <img src="maygui.jpg" alt="System Architecture" width="1000"/>
+</p>
+<p align="center">
+  <img src="maynhan.jpg" alt="System Architecture" width="1000"/>
+</p>
 ---
 
 ## 📌 Tác giả
